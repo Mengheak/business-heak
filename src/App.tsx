@@ -4,6 +4,7 @@ import MainLayout from "./Layouts/MainLayout";
 import Main from "./pages/Main";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
+import AccountDetails from "./pages/AccountDetails";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="/main" replace />} />
           <Route path="main" element={<Main />} />
+          <Route path="account-details/:id" element={<AccountDetails />} />
         </Route>
       </Routes>
     </Provider>

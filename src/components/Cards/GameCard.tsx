@@ -1,27 +1,49 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface GameCardProps {
+  id?: string;
   title: string;
   game: string;
   rank: string;
   price: number;
   description: string;
-  image: string;
+  images: string[];
   isSold: boolean;
 }
 
 const GameCard: React.FC<GameCardProps> = ({
+  id,
   title,
   game,
   rank,
   price,
   description,
-  image,
+  images,
   isSold,
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="border rounded shadow bg-white overflow-hidden">
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+    <div
+      className="border rounded shadow bg-white overflow-hidden"
+      onClick={() =>
+        navigate(`/account-details/${id}`, {
+          state: {
+            thisAccount: {
+              id,
+              title,
+              game,
+              rank,
+              price,
+              description,
+              images,
+              isSold,
+            },
+          },
+        })
+      }
+    >
+      <img src={images?.[0]} alt={title} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h2 className="text-lg font-semibold">{title}</h2>
         <p className="text-sm text-gray-600">

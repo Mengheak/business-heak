@@ -14,9 +14,10 @@ const Main: React.FC = () => {
           {gameAccountsData.map((game, _) => {
             return (
               <GameCard
+                id={game.id}
                 description={game.description}
                 game={game.game}
-                image={game?.images?.[0]}
+                images={game?.images}
                 isSold={game.isSold}
                 price={game.price}
                 rank={game.rank}
